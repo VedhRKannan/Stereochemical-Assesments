@@ -4,7 +4,8 @@
 import matplotlib.pyplot as plt
 
 # read the TSV file
-filename = ".tsv"  # Input the filename of the tsv file created by extract_angles.py
+# Input the filename of the tsv file created by extract_angles.py. Try "example/2nn8_angles.tsv".
+filename = "example/2nn8_angles.tsv"
 with open(filename, 'r') as f:
     lines = f.readlines()
 

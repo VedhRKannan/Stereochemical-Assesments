@@ -5,7 +5,7 @@ import Bio.PDB
 import matplotlib.pyplot as plt
 import numpy as np
 import Bio.PDB
-
+import time
 import math
 
 
@@ -47,7 +47,7 @@ def ramachandran_type(residue, next_residue):
 
 
 # Enter PDB file name here (eg. 1NQL, 2NN8, etc). Try "example/2nn8" for an example.
-pdb_code = ""
+pdb_code = "example/2nn8"
 
 
 print("Loading Structure...")
@@ -71,4 +71,6 @@ for model in structure:
                                              phi), degrees(psi),
                                           ramachandran_type(residue, poly[res_index+1])))
 output_file.close()
-print("Done")
+print("TSV file has been created")
+
+print(f"\n\n ------------------ NOW RUN plot.py---------------------")
