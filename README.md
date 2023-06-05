@@ -15,7 +15,8 @@ This repository offers a convenient tool for rapidly verifying the accuracy of a
 ## Requirements
 
 - Python 3.x
-- Please see requirements.txt for other dependencies
+- - Dependencies:
+- [Biopython, numpy, matplotlib, math]
 
 Please ensure that the necessary dependencies are installed before running the scripts.
 
