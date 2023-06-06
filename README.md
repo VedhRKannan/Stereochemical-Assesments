@@ -16,7 +16,10 @@ This repository offers a convenient tool for rapidly verifying the accuracy of a
 
 - Python 3.x
 - Dependencies:
-  - [Biopython, numpy, matplotlib, math]
+  - Biopython
+  - Numpy 
+  - Matplotlib 
+  - Math
 
 Please ensure that the necessary dependencies are installed before running the scripts.
 
