@@ -4,7 +4,7 @@ The `extract_angles.py` script extracts the phi and psi angles, also known as Ra
 
 The `plot.py` script reads the TSV file containing the torsion angles and generates a Ramachandran plot. This plot provides a visual representation of the protein's structural features. By analyzing the alpha helix and beta sheet clusters on the plot, one can assess the quality of the protein model.
 
-This repository offers a convenient tool for rapidly verifying the accuracy of an X-Ray Diffraction protein model, enabling confident utilization of the model.
+This repository offers a convenient tool for rapidly verifying the accuracy of protein models generate through the use of X-Ray Diffraction as well as the AlphaFold AI model by DeepMind, enabling confident utilisation of the model.
 
 ## Usage
 
@@ -22,4 +22,5 @@ This repository offers a convenient tool for rapidly verifying the accuracy of a
   - Math
 
 Please ensure that the necessary dependencies are installed before running the scripts.
+
 
