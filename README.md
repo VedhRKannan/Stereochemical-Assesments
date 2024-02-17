@@ -1,4 +1,4 @@
-# Protein Torsion Angle Analysis
+# Analysis of the secondary structure of the protein
 
 The `extract_angles.py` script extracts the phi and psi angles, also known as Ramachandran angles, from a Protein Data Bank (PDB) file. It also retrieves the corresponding amino acid residues associated with these torsion angles. The extracted data is then stored in a TSV (Tab-Separated Values) file.
 
