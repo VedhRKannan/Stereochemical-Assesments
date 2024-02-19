@@ -47,7 +47,7 @@ def ramachandran_type(residue, next_residue):
 
 
 # Enter PDB file name here (eg. 1NQL, 2NN8, etc). Try "example/2nn8" for an example.
-pdb_code = "example/2nn8"
+pdb_code = "example/1nql"
 
 
 print("Loading Structure...")
