@@ -1,4 +1,6 @@
-import argparse
+########################################################################
+########### RUN THIS FILE FIRST #########################################
+
 import Bio.PDB
 import matplotlib.pyplot as plt
 import numpy as np
@@ -44,43 +46,31 @@ def ramachandran_type(residue, next_residue):
         return "General"
 
 
-def main():
-    """The main
-    """
-
-    parser = argparse.ArgumentParser(
-                    prog='Extract angles',
-                    description='Extract the torsion angles'
-                    )
-    parser.add_argument('-i', "--input", help="the filename of the structure.") 
-    parser.add_argument("-o", '--output', help="the tsv file of torsion angles") 
-    args = parser.parse_args()
-    # Enter PDB file name here (eg. 1NQL, 2NN8, etc). Try "example/2nn8" for an example.
-    pdb_code = args.input
+# Enter PDB file name here (eg. 1NQL, 2NN8, etc). Try "example/2nn8" for an example.
+pdb_code = "example/1nql"
 
 
-    print("Loading Structure...")
-    structure = Bio.PDB.PDBParser().get_structure(pdb_code, "%s" % pdb_code)
-    print("Done")
+print("Loading Structure...")
+structure = Bio.PDB.PDBParser().get_structure(pdb_code, "%s.pdb" % pdb_code)
+print("Done")
 
-    print("Saving Angles to file...")
-    output_file = open(args.output, "w")
-    for model in structure:
-        for chain in model:
-            print("Chain %s" % str(chain.id))
-            polypeptides = Bio.PDB.CaPPBuilder().build_peptides(chain)
-            for poly_index, poly in enumerate(polypeptides):
-                phi_psi = poly.get_phi_psi_list()
-                for res_index, residue in enumerate(poly):
-                    phi, psi = phi_psi[res_index]
-                    if phi and psi:   # Ensure that both angles are not None before creating output
-                        output_file.write("%s:Chain%s:%s%i\t%f\t%f\t%s\n"
-                                          % (pdb_code, str(chain.id), residue.resname,
-                                             residue.id[1], degrees(
-                                                 phi), degrees(psi),
-                                              ramachandran_type(residue, poly[res_index+1])))
-    output_file.close()
+print("Saving Angles to file...")
+output_file = open("%s_angles.tsv" % pdb_code, "w")
+for model in structure:
+    for chain in model:
+        print("Chain %s" % str(chain.id))
+        polypeptides = Bio.PDB.CaPPBuilder().build_peptides(chain)
+        for poly_index, poly in enumerate(polypeptides):
+            phi_psi = poly.get_phi_psi_list()
+            for res_index, residue in enumerate(poly):
+                phi, psi = phi_psi[res_index]
+                if phi and psi:   # Ensure that both angles are not None before creating output
+                    output_file.write("%s:Chain%s:%s%i\t%f\t%f\t%s\n"
+                                      % (pdb_code, str(chain.id), residue.resname,
+                                         residue.id[1], degrees(
+                                             phi), degrees(psi),
+                                          ramachandran_type(residue, poly[res_index+1])))
+output_file.close()
+print("TSV file has been created")
 
-if __name__ == "__main__":
-    main()
-
+print(f"\n\n ------------------ NOW RUN plot.py---------------------")
